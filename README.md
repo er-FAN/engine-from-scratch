@@ -32,7 +32,7 @@ Progress and experiments are organized in sequential folders to track architectu
 - **`docs/`**: Technical notes, hardware concepts, and research memory logs.
 - **`MY_STORY.md`**: The narrative background and core development mindset.
 - **`README.md`**: Overview and repository map.
-- **`step-xx-name/`**: Dedicated subfolders containing code, tests, and decision logs for each specific stage.
+- **`step-xxxx-name/`**: Dedicated subfolders containing code, tests, and decision logs for each specific stage.
 
 ---
 
