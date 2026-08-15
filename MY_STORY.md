@@ -14,7 +14,7 @@ At that time, I was unfamiliar with **ECS (Entity-Component-System)** architectu
 
 ### Discovering ECS and Deepening Concepts
 
-Later, while discussing code optimization with AI tools, I was introduced to the ECS architecture for the first time (though I don't recall whether I fully integrated ECS into that specific project).
+Later, while discussing code optimization with AI tools, I was introduced to the ECS architecture for the first time.
 
 Significant time has passed since then, during which my understanding of ECS, Data-Oriented Design, RAM mechanics, and CPU caching has grown substantially—along with an appreciation for how much data locality impacts simulation and game engine performance.
 

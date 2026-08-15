@@ -21,7 +21,6 @@ Rather than relying strictly on pre-existing frameworks, this project prioritize
 - **Discovery over Predefined Tutorials:** Analyze and solve core architectural problems independently before comparing them with industry norms.
 - **Hardware & Memory Awareness:** Study how CPU caching, memory layout, and RAM interactions impact performance in C++.
 - **Structured Documentation:** Document every phase, benchmark, design decision, and lesson learned in dedicated stage-by-stage folders.
-- **Pragmatic Boundaries:** Maintain a balance—building from scratch to learn deeply, without reinventing fundamental tools like compilers or languages.
 
 ---
 
@@ -47,11 +46,9 @@ Progress and experiments are organized in sequential folders to track architectu
 
 This project follows an iterative, experiment-driven process rather than a rigid blueprint:
 
-- [x] Establish core repository structure, project vision, and philosophy.
-- [ ] Implement initial experiments for data layout and management in C++.
-- [ ] Refine and adapt memory/system architecture based on profiling and cache behavior.
-- [ ] Unify core modules into a clean, reusable standalone library.
-- [ ] Build a demonstration project (e.g., a simple ecosystem or physics sandbox) using the final library.
+- Iterative Development: Each iteration focuses on implementing a relatively complete system that addresses and resolves the limitations of the previous cycle.
+- Practical Validation: The resulting system is used as a library to power one or more small demo projects.
+- Feedback & Refinement: New issues, bottlenecks, and design flaws are identified, forming the groundwork for the next iteration.
 
 ---
 
