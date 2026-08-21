@@ -16,8 +16,8 @@ namespace step_0001
             auto velIt = componentStorage.velocities.find(entity.Id);
             if (posIt != componentStorage.positions.end() && velIt != componentStorage.velocities.end())
             {
-                posIt->second.x += velIt->second.x;
-                posIt->second.y += velIt->second.y;
+                posIt->second.x += velIt->second.x * 0.016f;
+                posIt->second.y += velIt->second.y * 0.016f;
 
                 std::cout << entity.Id << " : " << posIt->second.x << ", " << posIt->second.y << "\n";
             }

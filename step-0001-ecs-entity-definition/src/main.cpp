@@ -44,7 +44,7 @@ int main()
             system->Update(entityStorage, componentStorage);
         }
 
-        // Pause the execution of the current thread for 1 second
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        // Pause the execution of the current thread for 16 milli second (60 fps)
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 }
