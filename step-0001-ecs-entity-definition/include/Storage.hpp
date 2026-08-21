@@ -2,7 +2,11 @@
 
 #include <unordered_map>
 #include <cstdint>
+#include <vector>
+#include <memory>
 #include "Components.hpp"
+#include "Entity.hpp"
+#include "System.hpp"
 
 namespace step_0001
 {
@@ -32,5 +36,16 @@ namespace step_0001
         // --- Ball Components ---
         std::unordered_map<std::uint32_t, Ball> balls;
     };
+
+    struct EntityStorage 
+    {
+        std::vector<Entity> entities;
+    };
+
+    struct SystemStorage
+    {
+        std::vector<std::unique_ptr<System>> systems;
+    };
+    
 
 } // namespace step_0001

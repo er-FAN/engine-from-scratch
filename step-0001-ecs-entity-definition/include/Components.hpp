@@ -10,27 +10,18 @@
 
 namespace step_0001
 {
-    /**
-     * @brief Defines spatial position in 2D space.
-     */
     struct Position
     {
-        float x = 0.0f; /**< X-axis coordinate. */
-        float y = 0.0f; /**< Y-axis coordinate. */
+        float x = 0.0f;
+        float y = 0.0f;
     };
 
-    /**
-     * @brief Represents 2D dimensions/bounding box of an entity.
-     */
     struct Size
     {
-        float width = 0.0f;  /**< Width in world units. */
-        float height = 0.0f; /**< Height in world units. */
+        float width = 0.0f;
+        float height = 0.0f;
     };
 
-    /**
-     * @brief Holds mass properties for physics calculations.
-     */
     struct Mass
     {
         float massKg = 0.0f; /**< Mass in kilograms. */
@@ -46,7 +37,7 @@ namespace step_0001
     };
 
     /**
-     * @brief Normalized RGB color representation (0.0f to 1.0f).
+     * @brief Normalized RGB color representation (0.0f to 256.0f).
      */
     struct Color
     {

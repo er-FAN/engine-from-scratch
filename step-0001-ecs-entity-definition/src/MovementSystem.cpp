@@ -1,19 +1,26 @@
 #include "MovementSystem.hpp"
 #include "Components.hpp"
-#include "ComponentStorage.hpp"
+#include "Storage.hpp"
 
-step_0001::MovementSystem::MovementSystem() = default;
-
-step_0001::MovementSystem::~MovementSystem() = default;
-
-void step_0001::MovementSystem::Update(std::uint32_t entityId, ComponentStorage &compStorage)
+namespace step_0001
 {
-    // Apply movement vector to physical position
-    compStorage.positions[entityId].x += compStorage.velocities[entityId].x;
-    compStorage.positions[entityId].y += compStorage.velocities[entityId].y;
+    MovementSystem::MovementSystem() = default;
 
-    // Log output for verification
-    std::cout << "[MovementSystem] Entity ID: " << entityId
-              << " Updated Position -> ("
-              << compStorage.positions[entityId].x << ", " << compStorage.positions[entityId].y << ")\n";
+    MovementSystem::~MovementSystem() = default;
+
+    void MovementSystem::Update(EntityStorage &entityStorage, ComponentStorage &componentStorage)
+    {
+        for (auto &entity : entityStorage.entities)
+        {
+            auto posIt = componentStorage.positions.find(entity.Id);
+            auto velIt = componentStorage.velocities.find(entity.Id);
+            if (posIt != componentStorage.positions.end() && velIt != componentStorage.velocities.end())
+            {
+                posIt->second.x += velIt->second.x;
+                posIt->second.y += velIt->second.y;
+
+                std::cout << entity.Id << " : " << posIt->second.x << ", " << posIt->second.y << "\n";
+            }
+        }
+    }
 }
