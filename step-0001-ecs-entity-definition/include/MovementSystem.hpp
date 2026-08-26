@@ -10,6 +10,6 @@ namespace step_0001
         MovementSystem();
         ~MovementSystem() override;
 
-        void Update(EntityStorage &entityStorage, ComponentStorage &componentStorage) override;
+        void Update(EntityStorage &entityStorage, ComponentStorage &componentStorage, float deltaTime) override;
     };
 }

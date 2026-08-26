@@ -13,7 +13,8 @@ namespace step_0001
 
         virtual void Update(
             EntityStorage& entityStorage,
-            ComponentStorage& componentStorage
+            ComponentStorage& componentStorage,
+            float deltaTime
         ) = 0;
     };
 }
