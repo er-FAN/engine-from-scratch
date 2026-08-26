@@ -3,18 +3,20 @@
 #include "MovementSystem.hpp"
 #include <thread>
 
+using namespace step_0001;
+
+const std::uint32_t MAX_ENTITIES = 1000;
+
 int main()
 {
-    using namespace step_0001;
-
     ComponentStorage componentStorage;
     EntityStorage entityStorage;
     SystemStorage systemStorage;
 
     systemStorage.systems.emplace_back(std::make_unique<MovementSystem>());
 
-    Entity car = {100};
-    entityStorage.entities.push_back(car);
+    Entity car = {1};
+    entityStorage.entities[car.Id] = car;
 
     componentStorage.positions[car.Id] = Position{10.0f, 5.0f};
     componentStorage.sizes[car.Id] = Size{2.0f, 3.0f};
@@ -25,8 +27,8 @@ int main()
     componentStorage.capacities[car.Id] = Capacity{5, 120.0f};
     componentStorage.specifications[car.Id] = Specification{2025, "Peykan"};
 
-    Entity ball = {101};
-    entityStorage.entities.push_back(ball);
+    Entity ball = {2};
+    entityStorage.entities[ball.Id] = ball;
 
     componentStorage.balls[ball.Id] = Ball{"football", 0.1f};
     componentStorage.positions[ball.Id] = Position{30.0f, 0.0f};

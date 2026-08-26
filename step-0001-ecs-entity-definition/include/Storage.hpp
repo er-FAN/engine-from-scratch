@@ -18,28 +18,28 @@ namespace step_0001
     struct ComponentStorage
     {
         // --- Physical Components ---
-        std::unordered_map<std::uint32_t, Position> positions;
-        std::unordered_map<std::uint32_t, Size> sizes;
-        std::unordered_map<std::uint32_t, Mass> masses;
+        Position positions[MAX_ENTITIES];
+        Size sizes[MAX_ENTITIES];
+        Mass masses[MAX_ENTITIES];
 
         // --- Movement Components ---
-        std::unordered_map<std::uint32_t, Velocity> velocities;
+        Velocity velocities[MAX_ENTITIES];
 
         // --- Render & Identity Components ---
-        std::unordered_map<std::uint32_t, Color> colors;
-        std::unordered_map<std::uint32_t, Owner> owners;
+        Color colors[MAX_ENTITIES];
+        Owner owners[MAX_ENTITIES];
 
         // --- Vehicle Components ---
-        std::unordered_map<std::uint32_t, Capacity> capacities;
-        std::unordered_map<std::uint32_t, Specification> specifications;
+        Capacity capacities[MAX_ENTITIES];
+        Specification specifications[MAX_ENTITIES];
 
         // --- Ball Components ---
-        std::unordered_map<std::uint32_t, Ball> balls;
+        Ball balls[MAX_ENTITIES];
     };
 
     struct EntityStorage 
     {
-        std::vector<Entity> entities;
+        Entity entities[MAX_ENTITIES];
     };
 
     struct SystemStorage
