@@ -8,18 +8,18 @@ namespace step_0001
 
     MovementSystem::~MovementSystem() = default;
 
-    void MovementSystem::Update(EntityStorage &entityStorage, ComponentStorage &componentStorage)
+    void MovementSystem::Update(EntityStorage &entityStorage, ComponentStorage &componentStorage, float deltaTime)
     {
         for (auto &entity : entityStorage.entities)
         {
-            auto posIt = componentStorage.positions.find(entity.Id);
-            auto velIt = componentStorage.velocities.find(entity.Id);
-            if (posIt != componentStorage.positions.end() && velIt != componentStorage.velocities.end())
+            if (componentStorage.hasPosition[entity.Id] && componentStorage.hasVelocity[entity.Id])
             {
-                posIt->second.x += velIt->second.x * 0.016f;
-                posIt->second.y += velIt->second.y * 0.016f;
+                componentStorage.positions[entity.Id].x += componentStorage.velocities[entity.Id].x * deltaTime;
+                componentStorage.positions[entity.Id].y += componentStorage.velocities[entity.Id].y * deltaTime;
 
-                std::cout << entity.Id << " : " << posIt->second.x << ", " << posIt->second.y << "\n";
+                std::cout << entity.Id << " : "
+                          << componentStorage.positions[entity.Id].x << ", "
+                          << componentStorage.positions[entity.Id].y << "\n";
             }
         }
     }
