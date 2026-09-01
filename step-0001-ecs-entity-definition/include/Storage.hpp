@@ -42,8 +42,8 @@ namespace step_0001
         bool hasSpecification[MAX_ENTITIES]{};
 
         // --- Ball Components ---
-        Ball balls[MAX_ENTITIES];
-        bool hasBall[MAX_ENTITIES]{};
+        Tag tags[MAX_ENTITIES];
+        bool hasTag[MAX_ENTITIES]{};
     };
 
     struct EntityStorage

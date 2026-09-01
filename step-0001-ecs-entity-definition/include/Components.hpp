@@ -47,12 +47,11 @@ namespace step_0001
     };
 
     /**
-     * @brief Holds information of a ball.
+     * @brief Holds another information.
      */
-    struct Ball
+    struct Tag
     {
-        std::string type = "football"; /**< Type of ball. */
-        float radius = 0.0f; /**< Radius of ball. */
+        std::string value = "";
     };
     
 

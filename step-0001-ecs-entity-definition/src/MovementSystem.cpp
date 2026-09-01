@@ -16,10 +16,6 @@ namespace step_0001
             {
                 componentStorage.positions[entity.Id].x += componentStorage.velocities[entity.Id].x * deltaTime;
                 componentStorage.positions[entity.Id].y += componentStorage.velocities[entity.Id].y * deltaTime;
-
-                std::cout << entity.Id << " : "
-                          << componentStorage.positions[entity.Id].x << ", "
-                          << componentStorage.positions[entity.Id].y << "\n";
             }
         }
     }

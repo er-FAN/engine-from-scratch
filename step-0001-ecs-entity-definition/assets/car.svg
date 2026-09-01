@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="83.33628845214844 261.19854736328125 808.4000244140625 363.39996337890625"
+   width="808.4000244140625"
+   height="363.39996337890625"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="car.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.1269173"
+     inkscape:cx="523.99584"
+     inkscape:cy="312.80023"
+     inkscape:window-width="1920"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <clipPath
+     id="XMLID_75_">
+    <use
+       style="overflow:visible;"
+       xlink:href="#XMLID_72_"
+       id="use1" />
+  </clipPath>
+  <defs
+     id="defs1">
+    <path
+       d="M 0 0 H 1400 V 980 H 0 V 0 Z"
+       id="XMLID_72_" />
+  </defs>
+  <g
+     id="XMLID_60_"
+     class="st3"
+     transform="matrix(-1,0,0,1,1111.5363,-293.80148)"
+     clip-path="url(#XMLID_75_)">
+    <path
+       d="M 1007.7,797.09998 H 240.39999 l 43.4,-97.29999 H 1007.7 Z"
+       id="XMLID_34_"
+       class="st11"
+       style="fill:#e03b3b" />
+    <path
+       d="M 1008,719 V 700 H 283.79999 l -8.5,19 z"
+       id="XMLID_62_"
+       class="st12"
+       style="fill:#ef5454" />
+    <path
+       d="m 219.8,797.09998 h 808.4 v 57 H 219.8 Z"
+       id="XMLID_35_"
+       class="st13"
+       style="fill:#c63232" />
+    <path
+       d="m 219.8,839.09998 h 808.4 v 15 H 219.8 Z"
+       id="XMLID_57_"
+       class="st14"
+       style="fill:#a52f2f" />
+    <path
+       d="m 932.29999,699.79999 h -512.4 L 543.5,555.40002 h 289.70001 z"
+       id="XMLID_37_"
+       class="st11"
+       style="fill:#e03b3b" />
+    <path
+       d="m 839.5,565 -6.29999,-10 H 543.5 l -7.79999,10 z"
+       id="XMLID_65_"
+       class="st12"
+       style="fill:#ef5454" />
+    <path
+       d="M 898.90002,699.79999 H 452.10001 L 557.90002,578.09998 h 261.19996 z"
+       id="XMLID_41_"
+       class="st10"
+       style="fill:#252828" />
+    <path
+       d="M 557.90002,578 518,624 h 331.20001 l -30.10003,-46 z"
+       id="XMLID_7_"
+       class="st15"
+       style="fill:#393d3d" />
+    <path
+       d="m 479.3,843.59998 a 74.800003,74.800003 0 0 1 -74.8,74.8 74.800003,74.800003 0 0 1 -74.8,-74.8 74.800003,74.800003 0 0 1 74.8,-74.80001 74.800003,74.800003 0 0 1 74.8,74.80001 z"
+       id="XMLID_38_"
+       class="st10"
+       style="fill:#252828" />
+    <path
+       d="m 452.1,843.59998 a 47.599998,47.599998 0 0 1 -47.6,47.59999 47.599998,47.599998 0 0 1 -47.6,-47.59999 47.599998,47.599998 0 0 1 47.6,-47.6 47.599998,47.599998 0 0 1 47.6,47.6 z"
+       id="XMLID_39_"
+       class="st15"
+       style="fill:#393d3d" />
+    <path
+       d="m 430.7,843.59998 a 26.200001,26.200001 0 0 1 -26.2,26.2 26.200001,26.200001 0 0 1 -26.2,-26.2 26.200001,26.200001 0 0 1 26.2,-26.2 26.200001,26.200001 0 0 1 26.2,26.2 z"
+       id="XMLID_43_"
+       class="st16"
+       style="fill:#efeeed" />
+    <path
+       d="m 932.59999,843.59998 a 74.800003,74.800003 0 0 1 -74.8,74.8 74.800003,74.800003 0 0 1 -74.8,-74.8 74.800003,74.800003 0 0 1 74.8,-74.80001 74.800003,74.800003 0 0 1 74.8,74.80001 z"
+       id="XMLID_42_"
+       class="st10"
+       style="fill:#252828" />
+    <path
+       d="m 905.39999,843.59998 a 47.599998,47.599998 0 0 1 -47.6,47.59999 47.599998,47.599998 0 0 1 -47.6,-47.59999 47.599998,47.599998 0 0 1 47.6,-47.6 47.599998,47.599998 0 0 1 47.6,47.6 z"
+       id="XMLID_54_"
+       class="st15"
+       style="fill:#393d3d" />
+    <path
+       d="m 883.99999,843.59998 a 26.200001,26.200001 0 0 1 -26.2,26.2 26.200001,26.200001 0 0 1 -26.2,-26.2 26.200001,26.200001 0 0 1 26.2,-26.2 26.200001,26.200001 0 0 1 26.2,26.2 z"
+       id="XMLID_52_"
+       class="st16"
+       style="fill:#efeeed" />
+    <path
+       d="M 252.89999,769 H 304 v -39 h -33.60001 z"
+       id="XMLID_50_"
+       class="st16"
+       style="fill:#efeeed" />
+    <path
+       d="m 304,729.59998 h 19.6 v 39.2 H 304 Z"
+       id="XMLID_40_"
+       class="st17"
+       style="fill:#ffa300" />
+    <path
+       d="m 975,730 h 33 v 39 h -33 z"
+       id="XMLID_53_"
+       class="st16"
+       style="fill:#efeeed" />
+    <path
+       d="m 955.29999,729.59998 h 19.6 v 39.2 h -19.6 z"
+       id="XMLID_49_"
+       class="st17"
+       style="fill:#ffa300" />
+    <path
+       d="m 632.79999,567.20001 h 22.6 v 132.5 h -22.6 z"
+       id="XMLID_51_"
+       class="st11"
+       style="fill:#e03b3b" />
+    <path
+       d="m 796.09998,567.20001 h 22.6 v 132.5 h -22.6 z"
+       id="XMLID_56_"
+       class="st11"
+       style="fill:#e03b3b" />
+    <path
+       d="m 580.5,729.59998 h 52.3 v 14.39999 h -52.3 z"
+       id="XMLID_55_"
+       class="st13"
+       style="fill:#c63232" />
+    <path
+       d="m 743.79999,729.59998 h 52.3 v 14.39999 h -52.3 z"
+       id="XMLID_58_"
+       class="st13"
+       style="fill:#c63232" />
+    <path
+       d="m 474.10001,646.90002 h 11.8 v 44.7 h -11.8 z"
+       id="XMLID_59_"
+       class="st12"
+       style="fill:#ef5454" />
+  </g>
+</svg>
