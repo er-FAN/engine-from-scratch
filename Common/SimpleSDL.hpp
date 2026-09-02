@@ -1,8 +1,9 @@
 #pragma once
 // =====================================================================
 // SimpleSDL.hpp
-// یک لایبرری کوچک و ساده روی SDL3 برای کارهای ابتدایی:
-// راه‌اندازی، ساخت پنجره، کشیدن دایره، تکسچر، و آزادسازی منابع.
+// A small, simple wrapper library around SDL3 for basic tasks:
+// initialization, window creation, drawing circles, textures, and
+// resource cleanup.
 // =====================================================================
 
 #include <SDL3/SDL.h>
@@ -13,11 +14,11 @@
 
 namespace simplesdl {
 
-// شناسه‌ی یکتا برای هر تکسچر بارگذاری‌شده (۰ یعنی نامعتبر)
+// Unique identifier for each loaded texture (0 means invalid)
 using TextureId = int;
 constexpr TextureId InvalidTexture = 0;
 
-// رنگ ساده RGBA
+// Simple RGBA color
 struct Color {
     Uint8 r = 255, g = 255, b = 255, a = 255;
 };
@@ -25,55 +26,55 @@ struct Color {
 class App {
 public:
     App() = default;
-    ~App(); // خودکار منابع را آزاد می‌کند (RAII)
+    ~App(); // Automatically releases resources (RAII)
 
-    // App قابل کپی نیست (چون مالک منابع SDL است)
+    // App is not copyable (since it owns SDL resources)
     App(const App&) = delete;
     App& operator=(const App&) = delete;
 
-    // راه‌اندازی SDL و ساخت پنجره + رندرر
-    // در صورت خطا false برمی‌گرداند (پیام خطا را با SDL_GetError() ببینید)
+    // Initializes SDL and creates the window + renderer
+    // Returns false on failure (see the error message via SDL_GetError())
     bool Init(const std::string& title, int width, int height);
 
-    // بررسی می‌کند که آیا کاربر درخواست بستن پنجره (X) را داده یا نه
-    // همچنین رویدادهای دیگر را از صف خارج می‌کند تا پنجره فریز نشود
+    // Checks whether the user requested to close the window (the X button)
+    // Also drains other events from the queue so the window doesn't freeze
     bool PollQuit();
 
-    // پاک کردن صفحه با یک رنگ مشخص
+    // Clears the screen with a given color
     void Clear(const Color& color = {0, 0, 0, 255});
 
-    // کشیدن یک دایره توخالی (فقط خطوط دور دایره)
+    // Draws a hollow circle (only the outline)
     void DrawCircle(float centerX, float centerY, float radius,
                      const Color& color = {255, 255, 255, 255});
 
-    // کشیدن یک دایره پر (تو پر)
+    // Draws a filled circle
     void FillCircle(float centerX, float centerY, float radius,
                      const Color& color = {255, 255, 255, 255});
 
-    // نمایش نهایی فریم روی صفحه
+    // Presents the final frame to the screen
     void Present();
 
-    // ============= تکسچر (Texture) =============
+    // ============= Texture =============
 
-    // بارگذاری یک عکس (PNG, JPG, BMP, ...) از مسیر داده‌شده
-    // در صورت موفقیت یک شناسه (id) برمی‌گرداند، در صورت خطا InvalidTexture (0)
+    // Loads an image (PNG, JPG, BMP, ...) from the given path
+    // Returns a texture id on success, or InvalidTexture (0) on failure
     TextureId LoadTexture(const std::string& path);
 
-    // آزادسازی یک تکسچر خاص با شناسه‌اش (اختیاری - Shutdown همه را آزاد می‌کند)
+    // Frees a specific texture by its id (optional - Shutdown frees all of them)
     void UnloadTexture(TextureId id);
 
-    // رسم یک تکسچر در مختصات x,y
-    // اگر width/height داده نشود (یا منفی باشد)، اندازه‌ی اصلی خود تکسچر استفاده می‌شود
+    // Draws a texture at coordinates x, y
+    // If width/height are not given (or negative), the texture's native size is used
     void DrawTexture(TextureId id, float x, float y,
                       float width = -1.0f, float height = -1.0f);
 
-    // گرفتن اندازه‌ی اصلی یک تکسچر؛ در صورت نامعتبر بودن id مقدار false برمی‌گرداند
+    // Gets the native size of a texture; returns false if the id is invalid
     bool GetTextureSize(TextureId id, float& outWidth, float& outHeight) const;
 
-    // آزادسازی دستی منابع (اختیاری - در مخرب هم صدا زده می‌شود)
+    // Manually releases resources (optional - also called by the destructor)
     void Shutdown();
 
-    // دسترسی مستقیم در صورت نیاز به قابلیت‌های پیشرفته‌تر SDL
+    // Direct access in case more advanced SDL features are needed
     SDL_Window* GetWindow() const { return window_; }
     SDL_Renderer* GetRenderer() const { return renderer_; }
 

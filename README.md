@@ -31,7 +31,44 @@ Progress and experiments are organized in sequential folders to track architectu
 - **`docs/`**: Technical notes, hardware concepts, and research memory logs.
 - **`MY_STORY.md`**: The narrative background and core development mindset.
 - **`README.md`**: Overview and repository map.
+- **`SETUP_SDL.md`**: One-time environment setup guide for SDL3 and SDL3_image, shared by every stage.
+- **`Common/`**: The small shared rendering library (`SimpleSDL`) used across stages.
 - **`step-xxxx-name/`**: Dedicated subfolders containing code, tests, and decision logs for each specific stage.
+
+---
+
+## 🖼️ Rendering & Windowing (SDL3)
+
+Stages that involve any visual output (windows, drawing shapes, textures, etc.)
+use **SDL3** together with **SDL3_image**, wrapped by a small internal helper
+library called `SimpleSDL` (located in `Common/`). It handles window creation,
+basic shape drawing, texture loading, and resource cleanup so each stage can
+focus on its own logic instead of raw SDL boilerplate.
+
+SDL3 and SDL3_image are **not included in this repository** to keep it
+lightweight — they must be set up once on your own machine before building
+any stage that depends on them.
+
+➡️ **One-time setup:** see [`SETUP_SDL.md`](./SETUP_SDL.md) for downloading
+SDL3/SDL3_image and pointing the project to them via an environment variable.
+This only needs to be done once, regardless of how many stages you build.
+
+---
+
+## 🚀 Running a Stage
+
+Each `step-xxxx-name/` folder is an independent, buildable project and has
+**its own `README.md`** with:
+
+- A description of what that specific stage demonstrates
+- Any stage-specific setup notes (if applicable)
+- The exact build and run commands for that folder
+
+To get started with any stage:
+
+1. Complete the one-time [SDL setup](./SETUP_SDL.md) (only needed once for the whole repository)
+2. Open the `README.md` inside the stage folder you're interested in
+3. Follow its build/run instructions
 
 ---
 
@@ -39,6 +76,7 @@ Progress and experiments are organized in sequential folders to track architectu
 
 - **Language:** C++
 - **Focus Areas:** Systems programming, memory management, data layout, and performance optimization.
+- **Rendering:** SDL3 / SDL3_image (via the internal `SimpleSDL` helper library)
 
 ---
 

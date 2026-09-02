@@ -1,29 +1,30 @@
 # =====================================================================
 # FindSDL3ImageLocal.cmake
-# این فایل باید بعد از FindSDL3Local.cmake include شود (چون به SDL3_ROOT نیاز دارد)
+# This file must be included after FindSDL3Local.cmake (it depends on SDL3_ROOT)
 #
-# پیش‌فرض: پوشه SDL3_image هم‌سطح (کنار) پوشه SDL3_ROOT قرار دارد. یعنی اگر:
+# By default, this assumes the SDL3_image folder sits next to (at the same
+# level as) SDL3_ROOT. That is, if:
 #   SDL3_ROOT = C:\Libs\SDL3
-# آنگاه به‌صورت خودکار این مسیر را امتحان می‌کند:
+# it will automatically try this path:
 #   C:\Libs\SDL3_image
 #
-# اگر پوشه SDL3_image جای دیگری است، می‌توانی مستقیم مشخصش کنی:
+# If your SDL3_image folder is somewhere else, you can point to it directly:
 #   Environment Variable:  SDL3_IMAGE_ROOT
-#   یا موقع اجرای cmake:   -DSDL3_IMAGE_ROOT="مسیر/پوشه/SDL3_image"
+#   or when running cmake: -DSDL3_IMAGE_ROOT="path/to/SDL3_image"
 # =====================================================================
 
 if(NOT SDL3_ROOT)
-    message(FATAL_ERROR "FindSDL3ImageLocal.cmake باید بعد از FindSDL3Local.cmake include شود")
+    message(FATAL_ERROR "FindSDL3ImageLocal.cmake must be included after FindSDL3Local.cmake")
 endif()
 
-# اگر کاربر صریح مسیر نداده، اول Environment Variable را چک کن
+# If the user didn't pass a path explicitly, check the Environment Variable first
 if(NOT SDL3_IMAGE_ROOT)
     if(DEFINED ENV{SDL3_IMAGE_ROOT})
         set(SDL3_IMAGE_ROOT "$ENV{SDL3_IMAGE_ROOT}")
     endif()
 endif()
 
-# اگر هنوز مشخص نشده، فرض کن کنار SDL3_ROOT است (هم‌سطح آن)
+# If still not set, assume it's next to SDL3_ROOT (same parent folder)
 if(NOT SDL3_IMAGE_ROOT)
     get_filename_component(SDL3_PARENT_DIR "${SDL3_ROOT}" DIRECTORY)
     set(SDL3_IMAGE_ROOT "${SDL3_PARENT_DIR}/SDL3_image")
@@ -32,14 +33,14 @@ endif()
 if(NOT EXISTS "${SDL3_IMAGE_ROOT}/include/SDL3_image/SDL_image.h")
     message(FATAL_ERROR
         "\n"
-        "SDL3_image در این مسیر پیدا نشد: ${SDL3_IMAGE_ROOT}\n"
-        "اگر پوشه‌اش جای دیگری است، این را تنظیم کن:\n"
-        "  Environment Variable با نام SDL3_IMAGE_ROOT\n"
-        "  یا: -DSDL3_IMAGE_ROOT=\"مسیر/پوشه/SDL3_image\"\n"
+        "SDL3_image not found at this path: ${SDL3_IMAGE_ROOT}\n"
+        "If it's located elsewhere, set one of these:\n"
+        "  An Environment Variable named SDL3_IMAGE_ROOT\n"
+        "  Or: -DSDL3_IMAGE_ROOT=\"path/to/SDL3_image\"\n"
     )
 endif()
 
-# همان تشخیص معماری که برای SDL3 استفاده کردیم
+# Same architecture detection logic used for SDL3
 if(CMAKE_GENERATOR_PLATFORM)
     set(SDL3_IMAGE_ARCH ${CMAKE_GENERATOR_PLATFORM})
 elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
@@ -52,12 +53,12 @@ set(SDL3_IMAGE_LIB_DIR "${SDL3_IMAGE_ROOT}/lib/${SDL3_IMAGE_ARCH}")
 
 if(NOT EXISTS "${SDL3_IMAGE_LIB_DIR}/SDL3_image.lib")
     message(FATAL_ERROR
-        "SDL3_image.lib در این مسیر پیدا نشد: ${SDL3_IMAGE_LIB_DIR}\n"
-        "زیرپوشه‌های موجود در lib را چک کن (x64 / x86 / arm64)."
+        "SDL3_image.lib not found at this path: ${SDL3_IMAGE_LIB_DIR}\n"
+        "Check the subfolders available under lib (x64 / x86 / arm64)."
     )
 endif()
 
-message(STATUS "SDL3_image (${SDL3_IMAGE_ARCH}) از این مسیر استفاده می‌شود: ${SDL3_IMAGE_LIB_DIR}")
+message(STATUS "Using SDL3_image (${SDL3_IMAGE_ARCH}) from: ${SDL3_IMAGE_LIB_DIR}")
 
 add_library(SDL3ImageLocal INTERFACE)
 target_include_directories(SDL3ImageLocal INTERFACE "${SDL3_IMAGE_ROOT}/include")
