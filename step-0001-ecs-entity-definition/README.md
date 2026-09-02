@@ -125,9 +125,11 @@ troubleshooting section at the bottom of [`../SETUP_SDL.md`](../SETUP_SDL.md).
 ---
 
 ## 👀 What You Should See
-
+ 
 A window opens showing a red car and a bouncing ball on a background image.
 The ball moves diagonally and bounces off all four edges of the window; the
 car moves horizontally and bounces off the left/right edges. Both are driven
 purely by `MovementSystem` + `CollisionSystem` acting on their `Position` and
 `Velocity` components — no special-casing per entity.
+ 
+![Demo of Step 0001](./media/step_0001_demo.gif)
