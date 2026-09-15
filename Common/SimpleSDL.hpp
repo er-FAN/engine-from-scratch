@@ -40,6 +40,10 @@ public:
     // Also drains other events from the queue so the window doesn't freeze
     bool PollQuit();
 
+    // Reads one SDL event. Use this when another library (for example ImGui)
+    // also needs to receive every event.
+    bool PollEvent(SDL_Event& event);
+
     // Clears the screen with a given color
     void Clear(const Color& color = {0, 0, 0, 255});
 

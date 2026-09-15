@@ -52,6 +52,10 @@ bool App::PollQuit() {
     return quitRequested;
 }
 
+bool App::PollEvent(SDL_Event& event) {
+    return SDL_PollEvent(&event);
+}
+
 void App::Clear(const Color& color) {
     if (!renderer_) return;
     SDL_SetRenderDrawColor(renderer_, color.r, color.g, color.b, color.a);
