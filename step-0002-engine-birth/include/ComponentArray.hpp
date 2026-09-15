@@ -1,5 +1,5 @@
 #pragma once
-#include <cstdint>
+#include <cstddef>
 #include <vector>
 
 namespace step_0002
@@ -8,14 +8,23 @@ namespace step_0002
     {
     private:
         std::vector<std::byte> data;
+        std::vector<std::byte> activeMask;
+        std::size_t itemSize = 1;
+
     public:
-        ComponentArray();
+        explicit ComponentArray(std::size_t itemSize);
         ~ComponentArray();
 
-        ComponentArray GetComponentArray();
+        std::size_t SlotCount() const;
+        std::size_t LastSlotIndex() const;
+        std::size_t GetItemSize() const;
 
-        bool Add(std::vector<std::byte> data);
-        bool Update(uint64_t fromIndex, std::vector<std::byte> data);
-        bool Remove(uint64_t fromIndex, uint64_t lenght);
+        const std::vector<std::byte>& GetArray() const;
+        const std::vector<std::byte>& GetActiveMask() const;
+
+        bool Reserve();
+        bool Update(std::size_t index, const void *value);
+        bool SetActive(std::size_t index, bool isActive);
+        bool IsActive(std::size_t index) const;
     };
 }
