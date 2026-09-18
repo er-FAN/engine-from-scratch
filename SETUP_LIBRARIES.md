@@ -1,10 +1,10 @@
-# Setting up SDL3 for this project
+# Setting up SDL3, SDL3_image and ImGui for this project
 
-This project depends on **SDL3** and **SDL3_image**. These two libraries are
-not included in the repository (to keep its size small), so before building
-any stage of the project, you need to point your system to their location
-once. This setup is **shared across all stages of the project** and only
-needs to be done a single time.
+This project depends on **SDL3**, **SDL3_image**, and **Dear ImGui**. None of
+these are included in the repository (to keep its size small), so before
+building any stage of the project, you need to point your system to their
+location once. This setup is **shared across all stages of the project** and
+only needs to be done a single time.
 
 ---
 
@@ -38,13 +38,49 @@ looks for it there:
 ```
 C:\Libs\
 ├── SDL3\
-└── SDL3_image\
+├── SDL3_image\
+└── imgui\
 ```
 
 > If you placed the SDL3_image folder somewhere else, that's fine too — see
 > the "Advanced settings" section below for how to point to a custom path.
 
-## Step 3: Point the project to SDL3 (Environment Variable)
+## Step 3: Download Dear ImGui
+
+Unlike SDL3 and SDL3_image, ImGui is **not distributed as a prebuilt
+library** — it's used as raw source code that gets compiled as part of the
+project. You get it by cloning (or downloading) the repository:
+
+🔗 https://github.com/ocornut/imgui
+
+**Option A — clone with git (recommended):**
+```bash
+git clone https://github.com/ocornut/imgui.git
+```
+
+**Option B — download as a zip:**
+Go to the repository page, click "Code" → "Download ZIP", and extract it.
+Make sure the extracted folder is named `imgui` (not `imgui-master` or
+similar) and directly contains `imgui.h`, `imgui.cpp`, and a `backends/`
+subfolder.
+
+**Just like SDL3_image, place this folder right next to your SDL3 folder**,
+since the project's default configuration looks for it there:
+
+```
+C:\Libs\
+├── SDL3\
+├── SDL3_image\
+└── imgui\
+```
+
+> No separate build step is needed for ImGui — the project compiles its
+> source files automatically as part of your build. If you placed it
+> somewhere else, see "Advanced settings" below.
+
+---
+
+## Step 4: Point the project to SDL3 (Environment Variable)
 
 You need to create an environment variable named `SDL3_ROOT` that points to
 the SDL3 folder.
@@ -95,28 +131,29 @@ If you see the path you entered, it's set correctly.
 
 ---
 
-## Step 4: Point the project to SDL3_image (optional in most cases)
+## Step 5: Point the project to SDL3_image and ImGui (optional in most cases)
 
-If you placed SDL3_image right next to SDL3 (as in Step 2), **you don't need
-to do anything else** — the project automatically resolves its path from
-`SDL3_ROOT`.
+If you placed **SDL3_image** and **imgui** right next to SDL3 (as in Steps 2
+and 3), **you don't need to do anything else** — the project automatically
+resolves both paths from `SDL3_ROOT`.
 
-If it's located somewhere else, create another environment variable the same
-way as above:
+If either one is located somewhere else, create the matching environment
+variable the same way as `SDL3_ROOT` above:
 ```
 setx SDL3_IMAGE_ROOT "path/to/SDL3_image"
+setx IMGUI_ROOT "path/to/imgui"
 ```
 
 ---
 
-## Alternative: without an Environment Variable (temporary)
+## Alternative: without Environment Variables (temporary)
 
-If you'd rather not create an environment variable, you can pass the path
+If you'd rather not create environment variables, you can pass the paths
 directly when running `cmake`. This only applies to that single build and
 must be repeated every time you delete the `build` folder:
 
 ```
-cmake -S . -B build -DSDL3_ROOT="C:\Libs\SDL3" -DSDL3_IMAGE_ROOT="C:\Libs\SDL3_image"
+cmake -S . -B build -DSDL3_ROOT="C:\Libs\SDL3" -DSDL3_IMAGE_ROOT="C:\Libs\SDL3_image" -DIMGUI_ROOT="C:\Libs\imgui"
 ```
 
 ---
@@ -147,3 +184,28 @@ Check the following:
 4. **Old terminal/IDE session:** after running `setx`, any terminal or IDE
    that was already open won't see the new value — it needs to be fully
    closed and reopened
+
+### ImGui-specific errors
+
+If you hit an error like:
+
+```
+imgui path not found or incorrect: ...
+(imgui.h not found there)
+```
+or
+```
+SDL3 backend not found at: .../backends/imgui_impl_sdl3.h
+```
+
+Check the following:
+
+1. **Correct folder, not a subfolder:** `IMGUI_ROOT` (or its default next to
+   `SDL3_ROOT`) must point to the folder that directly contains `imgui.h`
+   and a `backends/` subfolder — not `imgui-master`, not a folder one level
+   too deep or too shallow.
+2. **Full clone, not a partial download:** make sure the `backends/` folder
+   was actually included (a zip download from GitHub includes it by
+   default, but a shallow or filtered clone might not).
+3. **Stale CMake cache:** same as above — delete `build` and reconfigure
+   after fixing the path.
